@@ -82,7 +82,7 @@ positive_diff
 mean(positive_diff)
 ```
 
-
+\newpage
 ### Task 2: Basic Data Frame Practice
 
 ### Question 1
@@ -125,7 +125,7 @@ knitr::kable(bp_df)
 
 ```
 
-
+\newpage
 ## Task 3: List practice
 
 
@@ -184,7 +184,7 @@ bp_list[["treat"]]
 bp_list$placebo$pre
 
 ```
-
+\newpage
 ## Task 4: Control Flow Practice
 
 ### Question 1
@@ -242,8 +242,8 @@ bp_list
 
 
 
-
-## Task 5 
+\newpage
+## Task 5: Function Writing
 
 ### Question 1 
 
