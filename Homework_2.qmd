@@ -1,17 +1,32 @@
 ---
 title: "Homework 2"
 author: Keshav Ramesh
-format: html
+format: pdf
 editor: visual
 ---
+
+
+```{r, global_options, include=FALSE}
+
+
+knitr::opts_chunk$set(tidy.opts=list(width.cutoff=60), tidy=TRUE)
+
+```
+
+
+
 
 ## Task 1: Basic Vector Practice
 
 ### Question 1
 
+
+
 ```{r}
-pre = c(130, 128, 116, 124, 133, 134, 118, 126, 114, 127, 141, 138, 128, 140, 137, 131, 120, 128, 139, 135)
-post = c(114, 98, 113, 99, 107, 116, 113, 111, 119, 117, 101, 119, 130, 122, 106, 106, 124, 102, 117, 113)
+pre = c(130, 128, 116, 124, 133, 134, 118, 126, 114, 127, 141, 138, 128,
+        140, 137, 131, 120, 128, 139, 135)
+post = c(114, 98, 113, 99, 107, 116, 113, 111, 119, 117, 101, 119, 130,
+         122, 106, 106, 124, 102, 117, 113)
 
 
 ```
@@ -87,8 +102,7 @@ bp_df = data.frame(
 ### Question 2 
 
 ```{r}
-bp_df[bp_df$diff_bp < 0, ]
-
+bp_df[bp_df$diff < 0, ]
 
 ```
 
@@ -97,6 +111,9 @@ bp_df[bp_df$diff_bp < 0, ]
 ```{r}
 bp_df$normal = bp_df$post < 120
 
+
+## testing
+bp_df
 
 ```
 
@@ -140,7 +157,7 @@ bp_df_placebo = data.frame(
 ### Question 2 
 
 ```{r}
-bp_list <- list(treat = bp_df, placebo = bp_df_placebo)
+bp_list = list(treat = bp_df, placebo = bp_df_placebo)
 
 
 
@@ -164,7 +181,7 @@ bp_list[["treat"]]
 
 
 ```{r}
-bp_list$placebo$pre_bp
+bp_list$placebo$pre
 
 ```
 
@@ -174,7 +191,7 @@ bp_list$placebo$pre_bp
 
 ```{r}
 
-bp_list$treat$status <- character(20)
+bp_list$treat$status = character(20)
 
 ```
 
@@ -193,7 +210,7 @@ for (i in 1:20) {
   }
 }
 
-
+## testing
 bp_list
 
 ```
@@ -204,7 +221,7 @@ bp_list
 ```{r}
 
 
-bp_list$placebo$status <- character(10)
+bp_list$placebo$status = character(10)
 
 
 for (i in 1:10) {
@@ -217,6 +234,8 @@ for (i in 1:10) {
   }
 }
 
+## testing
+bp_list
 
 
 ```
@@ -230,10 +249,10 @@ for (i in 1:10) {
 
 ```{r}
 
-summary_statsitics_function <- function(df_list, stat = "mean") {
+summary_statsitics_function = function(df_list, stat = "mean") {
   
-  my_fun <- get(stat)
-  summary <- c(
+  my_fun = get(stat)
+  summary = c(
     my_fun(df_list$treat$pre),
     my_fun(df_list$treat$post),
     my_fun(df_list$treat$diff),
@@ -241,7 +260,13 @@ summary_statsitics_function <- function(df_list, stat = "mean") {
     my_fun(df_list$placebo$post),
     my_fun(df_list$placebo$diff)
   )
-  names(summary) = paste0(stat, "_", c("treat_pre_BP", "treat_post_BP", "treat_diff_BP", "placebo_pre_BP", "placebo_post_BP", "placebo_diff_BP"))
+  names(summary) = paste0(stat, "_", c(
+    "treat_pre_BP", 
+    "treat_post_BP", 
+    "treat_diff_BP", 
+    "placebo_pre_BP", 
+    "placebo_post_BP", 
+    "placebo_diff_BP"))
   
   
   return(summary)
@@ -250,15 +275,15 @@ summary_statsitics_function <- function(df_list, stat = "mean") {
 
 # Testing Function
 
-summary_function(bp_list)
+summary_statsitics_function(bp_list)
 
-summary_function(bp_list, stat = "var")
+summary_statsitics_function(bp_list, stat = "var")
 
-summary_function(bp_list, stat = "sd")
+summary_statsitics_function(bp_list, stat = "sd")
 
-summary_function(bp_list, stat = "min")
+summary_statsitics_function(bp_list, stat = "min")
 
-summary_function(bp_list, stat = "max")
+summary_statsitics_function(bp_list, stat = "max")
 
 
 
